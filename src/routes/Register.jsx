@@ -16,7 +16,6 @@ const Register = () => {
                 <label htmlFor="password">Contraseña: </label>
                 <input type="text" id='password' name='password'/>
                 <input type="submit" value="Registrarse" />
-
             </form>
         </>
     )
