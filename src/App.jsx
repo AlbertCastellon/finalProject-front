@@ -7,6 +7,7 @@ import './App.css'
 import { MyProvider } from './context/MyContext'
 import Footer from './components/Footer'
 import Foro from './routes/Foro'
+import Register from './routes/Register'
 
 function App() {
   const [count, setCount] = useState(0)

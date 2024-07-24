@@ -1,8 +1,8 @@
 const AboutUs = () => {
     return(
-        <>
-            <h1>Soy About Us</h1>
-        </>
+        <main>
+            <h1 className='title'>Soy About Us</h1>
+        </main>
     )
 }
 
