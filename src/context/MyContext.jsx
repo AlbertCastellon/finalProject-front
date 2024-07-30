@@ -16,4 +16,4 @@ export const MyProvider = ({children}) => {
     )
 }
 
-export const useMy = () => useContext(MyContext)
+export const useMyContext = () => useContext(MyContext)

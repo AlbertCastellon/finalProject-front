@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom"
-import { useMy } from "../context/MyContext.jsx"
+import { useMyContext } from "../context/MyContext.jsx"
 
 const NavBar = () => {
-    const {isLogged} = useMy()
+    const {isLogged} = useMyContext()
     return(
         <header>
             
@@ -11,6 +11,8 @@ const NavBar = () => {
                 <Link to='/'>Home</Link>
                 <span> - </span>
                 <Link to='/aboutus'>AboutUs</Link>
+                <span> - </span>
+                <Link to='/foro'>Foro</Link>
             </nav>
             <div className="buttons-div">
                 {!isLogged ?

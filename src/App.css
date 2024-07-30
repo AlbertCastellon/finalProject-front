@@ -57,3 +57,9 @@ footer div {
   display: flex;
   flex-direction: column;
 }
+.register_form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  align-content: center;
+}

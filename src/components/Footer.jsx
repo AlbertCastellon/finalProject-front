@@ -21,5 +21,3 @@ const Footer = () => {
 
 
 export default Footer
-
-//On Trobar-nos: Avinguda de Roma, 13, 08330 Premià de Mar, Barcelona, telèfon fixe 937424844, Orion 623381594, Ariel 622336509, Instagram @garagesava
