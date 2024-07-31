@@ -1,12 +1,14 @@
 import axios from "axios"
 import { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form';
+import TarjetaComentario from "../components/TarjetaComentario";
 
 const Foro = () => {
     const [comentarios, setComentarios] = useState([])
 
     const fetchData = async () => {
         const data = await axios.get('http://localhost:8080/api/comentarios')
+        console.log(data)
         setComentarios(data.data)
     }
     
@@ -23,7 +25,9 @@ const Foro = () => {
     return (
         <main>
             <h1>Foro</h1>
+            <div className="foro">
             {comentarios?.map((item, index) => <TarjetaComentario item={item} index={index} />)}
+            </div>
             <form onSubmit={handleSubmit((data) => {
                 axios.post('http://localhost:8080/comentarios', data)
                   .then(function (response) {
