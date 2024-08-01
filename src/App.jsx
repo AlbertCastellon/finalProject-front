@@ -8,6 +8,7 @@ import { MyProvider } from './context/MyContext'
 import Footer from './components/Footer'
 import Foro from './routes/Foro'
 import Register from './routes/Register'
+import Login from './components/Login'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -19,6 +20,7 @@ function App() {
           <NavBar />
           <Routes>
             <Route path='/' element={<Home />} />
+            <Route path='/login' element={<Login />} />
             <Route path='/aboutus' element={<AboutUs />} />
             <Route path='/foro' element={<Foro />} />
             <Route path='/register' element={<Register />} />
