@@ -12,12 +12,12 @@ const Login = () => {
                 username,
                 password
             }
+            localStorage.setItem("test", 'hola')
             const response = await axios.post('http://localhost:8080/login', payload)
             const data = response.data;
-            console.log(typeof(data.token))
-            console.log(typeof(data.userId))
-            localStorage.setItem("token", data.token)
-            localStorage.setItem("user", data.userId)
+            console.log(data.token)
+            console.log(data.userId)
+            document.cookie = `token = ${data.token}; userId = ${data.userId}; SameSite=none`
             logInOut()
 
         }catch(error){
