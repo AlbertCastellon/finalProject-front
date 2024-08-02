@@ -12,11 +12,14 @@ const Login = () => {
                 username,
                 password
             }
-            const response = axios.post('http://localhost:8080/login', payload)
-            const data = (await response).data;
+            const response = await axios.post('http://localhost:8080/login', payload)
+            const data = response.data;
+            console.log(typeof(data.token))
+            console.log(typeof(data.userId))
             localStorage.setItem("token", data.token)
             localStorage.setItem("user", data.userId)
             logInOut()
+
         }catch(error){
             console.log(error)
         }
@@ -24,13 +27,15 @@ const Login = () => {
     }
 
     return (
-        <div>
-            <label>Usuario: </label>
-            <input type="text" value={username} onChange={e => setUsername(e.target.value)}/>
-            <label>Contraseña: </label>
-            <input type="password" value={password} onChange={e => setpassword(e.target.value)} />
-            <button onClick={doLogin}>Ingresar</button>
-        </div>
+        <main>
+            <div>
+                <label>Usuario: </label>
+                <input type="text" value={username} onChange={e => setUsername(e.target.value)}/>
+                <label>Contraseña: </label>
+                <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
+                <button onClick={doLogin}>Ingresar</button>
+            </div>
+        </main>
     )
 }
 
