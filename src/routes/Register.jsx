@@ -1,7 +1,10 @@
 import { useForm } from 'react-hook-form';
 import axios from "axios"
+import { useNavigate } from 'react-router-dom'
+
 
 const Register = () => {
+    const navigate = useNavigate()
     const {
         register,
         handleSubmit,
@@ -14,6 +17,7 @@ const Register = () => {
                 axios.post('http://localhost:8080/register', data)
                   .then(function (response) {
                     console.log(response);
+                    navigate('/')
                   })
                   .catch(function (error) {
                     console.log(error);

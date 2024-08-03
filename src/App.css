@@ -25,10 +25,11 @@ body {
 main {
   margin: 0;
   background-image: url('./assets/images/background-image.jpg');
-  height: 100vh;
-  width: 100vw;
+  width: 99vw;
   background-position: center;
   background-size: cover;
+  min-height: 70vh;
+  padding-bottom: 25px;
 }
 
 header {
@@ -52,6 +53,8 @@ header {
 footer {
   display: flex;
   justify-content: space-evenly;
+  width: 100%;
+  align-items: center;
 }
 footer div {
   display: flex;
@@ -82,4 +85,29 @@ nav {
 }
 #autor {
   align-self: flex-end;
+}
+
+.servicios-lista{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+}
+.servicios-lista h3 {
+  font-size: 30px;
+}
+.servicios {
+  width: 30%;
+
+}
+.servicios-moto {
+  width: 40%;
+
+}
+.titulos-home {
+  font-size: 40px;
+}
+button {
+  border: 1px solid black;
+  margin: 2px;
 }

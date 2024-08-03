@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useMyContext } from "../context/MyContext.jsx"
-import { useNavigate } from "react-router-dom";
+import Cookies from 'js-cookie'
 
 const NavBar = () => {
     const {isLogged, logInOut} = useMyContext()
@@ -11,7 +11,7 @@ const NavBar = () => {
             
             <img id='logo' src='./src/assets/images/Sava.png' />
             <nav>
-                <Link to='/'>Home</Link>
+                <Link to='/'>Inicio</Link>
                 <span> - </span>
                 <Link to='/aboutus'>AboutUs</Link>
                 <span> - </span>
@@ -20,7 +20,12 @@ const NavBar = () => {
             <div className="buttons-div">
                 {!isLogged ?
                     (<button className='log-btn' onClick={() => navigate('/login')}>Log in</button>) // link --> useNavigate
-                    : (<button onClick={logInOut} className='log-btn'>Log out</button>)
+                    : (<button onClick={() => {
+                        logInOut()
+                        Cookies.remove('token')
+                        Cookies.remove('userId')
+                    }
+                    } className='log-btn'>Log out</button>)
                 }
                 <button onClick={() => navigate('/register')}>Registrarse</button>
             </div>

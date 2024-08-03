@@ -1,25 +1,26 @@
 import { useState } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 import { useMyContext } from "../context/MyContext.jsx"
+import Cookies from 'js-cookie'
 
 const Login = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const {logInOut} = useMyContext()
+    const navigate = useNavigate()
     const doLogin = async () => {
         try{
             const payload = {
                 username,
                 password
             }
-            localStorage.setItem("test", 'hola')
             const response = await axios.post('http://localhost:8080/login', payload)
             const data = response.data;
-            console.log(data.token)
-            console.log(data.userId)
-            document.cookie = `token = ${data.token}; userId = ${data.userId}; SameSite=none`
+            Cookies.set('token', data.token)
+            Cookies.set('userId', data.userId)
             logInOut()
-
+            navigate('/')
         }catch(error){
             console.log(error)
         }

@@ -2,16 +2,21 @@ import axios from "axios"
 import { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form';
 import TarjetaComentario from "../components/TarjetaComentario";
+import { useMyContext } from "../context/MyContext.jsx"
+import Cookies from 'js-cookie'
 
 const Foro = () => {
     const [comentarios, setComentarios] = useState([])
+    const { isLogged } = useMyContext()
 
     const fetchData = async () => {
         const data = await axios.get('http://localhost:8080/api/comentarios')
-        console.log(data)
         setComentarios(data.data)
     }
-    
+    let userId = 0
+    if (isLogged){
+      userId = Cookies.get('userId')
+    }
     useEffect(() =>  {
         fetchData()
     }, [])
@@ -22,13 +27,19 @@ const Foro = () => {
         formState: { errors },
       } = useForm();
 
+
     return (
         <main>
-            <h1>Foro</h1>
+            <h1 className='title'>Foro</h1>
             <div className="foro">
             {comentarios?.map((item, index) => <TarjetaComentario item={item} index={index} />)}
             </div>
             <form onSubmit={handleSubmit((data) => {
+                let userId = 0
+                if (isLogged){
+                  userId = Cookies.get('userId')
+                }
+                data.userId = userId
                 axios.post('http://localhost:8080/comentarios', data)
                   .then(function (response) {
                     console.log(response);
