@@ -15,7 +15,7 @@ const Login = () => {
                 username,
                 password
             }
-            const response = await axios.post('http://localhost:8080/login', payload)
+            const response = await axios.post(import.meta.env.REACT_APP_BASE_URL + '/login', payload)
             const data = response.data;
             Cookies.set('token', data.token)
             Cookies.set('userId', data.userId)

@@ -111,3 +111,13 @@ button {
   border: 1px solid black;
   margin: 2px;
 }
+.tarjeta-miembro {
+  display: flex;
+  width: 40%;
+  margin: 10px;
+}
+.miembros {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

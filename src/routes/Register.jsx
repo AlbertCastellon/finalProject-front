@@ -14,7 +14,7 @@ const Register = () => {
     return (
         <main>
             <form className='register_form' onSubmit={handleSubmit((data) => {
-                axios.post('http://localhost:8080/register', data)
+                axios.post(import.meta.env.REACT_APP_BASE_URL + 'register', data)
                   .then(function (response) {
                     console.log(response);
                     navigate('/')

@@ -10,7 +10,7 @@ const Foro = () => {
     const { isLogged } = useMyContext()
 
     const fetchData = async () => {
-        const data = await axios.get('http://localhost:8080/api/comentarios')
+        const data = await axios.get(import.meta.env.REACT_APP_BASE_URL + '/api/comentarios')
         setComentarios(data.data)
     }
     let userId = 0
@@ -20,7 +20,7 @@ const Foro = () => {
     useEffect(() =>  {
         fetchData()
     }, [])
-
+    console.log(comentarios)
     const {
         register,
         handleSubmit,
@@ -40,7 +40,7 @@ const Foro = () => {
                   userId = Cookies.get('userId')
                 }
                 data.userId = userId
-                axios.post('http://localhost:8080/comentarios', data)
+                axios.post(import.meta.env.REACT_APP_BASE_URL + '/comentarios', data)
                   .then(function (response) {
                     console.log(response);
                   })
